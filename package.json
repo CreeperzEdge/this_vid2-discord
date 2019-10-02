@@ -4,17 +4,13 @@
   "description": "The objectively best Twitter video downloader bot",
   "main": "app.js",
   "dependencies": {
-    "@keyv/sqlite": "^2.0.1",
+    "discord.js": "^11.5.1",
     "fluent-ffmpeg": "^2.1.2",
     "fs-extra": "^8.1.0",
-    "keyv": "^3.1.0",
-    "node-fetch": "^2.3.0",
-    "twit": "github:tykarol/twit"
+    "node-fetch": "^2.6.0",
+    "ytdl-core": "^0.29.7"
   },
-  "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-plugin-promise": "^4.2.1"
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TheEssem/this_vid2.git"
