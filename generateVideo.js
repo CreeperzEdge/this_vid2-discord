@@ -51,7 +51,7 @@ module.exports = (filename, handle) => {
         filter: "drawtext",
         options: {
           fontfile: "'./assets/DejaVuSans.ttf'",
-          text: `@${handle}`,
+          text: `'@${handle}'`,
           fontcolor: "white",
           fontsize: outputFontSize.toString(),
           box: "1",
