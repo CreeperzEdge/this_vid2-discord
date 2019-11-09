@@ -122,11 +122,11 @@ module.exports = (filename, handle) => {
       if (metadata.streams.length >= 2) {
         ffmpeg(filename).input("./assets/outro.mp4").duration(duration + 5).videoBitrate(150).fps(5).audioChannels(1).audioBitrate(8).complexFilter(filters, ["v", "a"]).on("end", () => {
           resolve(outputFilename);
-        }).on("start", (cmd) => console.log(cmd)).save(outputFilename);
+        }).on("start", () => console.log(`Rendering video by ${handle}...`)).save(outputFilename);
       } else {
         ffmpeg(filename).input("./assets/silence.mp3").input("./assets/outro.mp4").duration(duration + 5).videoBitrate(150).fps(5).audioChannels(1).audioBitrate(8).complexFilter(filters, ["v", "a"]).on("end", () => {
           resolve(outputFilename);
-        }).on("start", (cmd) => console.log(cmd)).save(outputFilename);
+        }).on("start", () => console.log(`Rendering video by ${handle}...`)).save(outputFilename);
       }
     });
   });

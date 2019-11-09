@@ -24,11 +24,12 @@ const client = new Discord.Client();
 client.login(config.discordToken);
 
 client.on("message", async (msg) => {
-  if (msg.mentions.members.find("id", client.user.id)) {
+  if (msg.mentions.members.get(client.user.id)) {
       const randomFilename = Math.random().toString(36).substring(2, 15);
       const fileName = `./cache/${msg.author.username}-${randomFilename}.mp4`;
       const url = msg.content.split(' ')[1];
-      console.log(url)
+      if (!url) return;
+      console.log(`Downloading ${url}... (Requested by ${msg.author.tag})`);
       const userName = await handles(url);
       downloaders(url, fileName).then(async () => {
         const outputPath = await generateVideo(fileName, userName); 
@@ -39,6 +40,7 @@ client.on("message", async (msg) => {
       });
       await fs.remove(fileName);
       await fs.remove(outputPath);
+      console.log("Done!\n");
       });
     }
 });
