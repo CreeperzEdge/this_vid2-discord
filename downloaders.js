@@ -9,6 +9,8 @@ module.exports = async function (url, fn) {
         return twitter(url, fn);
     } else if (url.includes("reddit.com/")) {
         return reddit(url, fn);
+    } else if (url.includes("tiktok.com/@") && url.includes("/video/")) {
+        return reddit(url, fn);
     } else {
         throw new Error("No compatible downloaders found.");
     }
