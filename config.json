@@ -1,3 +1,4 @@
 {
-  "discordToken": "PUT TOKEN HERE"
+  "discordToken": "PUT TOKEN HERE",
+  "maxLength": 30
 }

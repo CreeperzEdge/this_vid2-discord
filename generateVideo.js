@@ -1,11 +1,12 @@
 const ffmpeg = require("fluent-ffmpeg");
+const config = require("./config.json");
 
 module.exports = (filename, handle) => {
   return new Promise((resolve, reject) => {
     const outputFilename = `./cache/${Math.random().toString(36).substring(2, 15)}-output.mp4`;
     ffmpeg.ffprobe(filename, (error, metadata) => {
       if (error) reject(error);
-      const duration = parseInt(metadata.format.duration) >= 30 ? 30 : metadata.format.duration;
+      const duration = parseInt(metadata.format.duration) >= config.maxLength ? config.maxLength : metadata.format.duration;
       const inputWidth = metadata.streams[0].width;
       const inputHeight = metadata.streams[0].height;
       const outputFontSize = Math.sqrt(Math.pow(inputWidth, 2) + Math.pow(inputHeight, 2)) / 1468.6 * 72;
